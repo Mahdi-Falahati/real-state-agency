@@ -1,9 +1,11 @@
 export default function Footer() {
   return (
-    <footer>
+    <footer className="bg-blue-700 text-white rounded-t-md p-4 font-semibold flex flex-wrap justify-around">
       <div>
-        <h3>سامانه خرید و اجاره ملک فلاحتی</h3>
-        <p>
+        <h3 className="tracking-widest mb-3 text-xl">
+          سامانه خرید و اجاره ملک فلاحتی
+        </h3>
+        <p className="w-full md:w-[500px] lg:w-[750px] leading-6 font-normal text-justify">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
           استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
@@ -17,11 +19,11 @@ export default function Footer() {
           قرار گیرد.
         </p>
       </div>
-      <ul>
-        <li>تعرفه قانونی</li>
-        <li>دسترسی سریع</li>
-        <li>مشاورین خبره</li>
-        <li>قولنامه محضری</li>
+      <ul className="flex flex-col md:list-disc flex-wrap sm:flex-row md:flex-col justify-around items-start mt-2">
+        <li className="m-2">تعرفه های قانونی</li>
+        <li className="m-2">دسترسی سریع</li>
+        <li className="m-2">مشاورین خبره</li>
+        <li className="m-2">قولنامه محضری</li>
       </ul>
     </footer>
   );

@@ -2,11 +2,10 @@ import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 
 export default function Layout({ children }) {
-  const style = { minHeight: "700px" };
   return (
     <>
       <Header />
-      <main styles={style}>{children}</main>
+      <main className="min-h-[318px]">{children}</main>
       <Footer />
     </>
   );
