@@ -1,8 +1,9 @@
-import { connect, connections } from "mongoose";
+import { connect, connections, set } from "mongoose";
 
-export default connectDB = async () => {
+const connectDB = async () => {
   if (connections[0].readyState) return;
 
-  mongoose.set("strictQuery", false);
+  set("strictQuery", false);
   await connect(process.env.MONGO_URI);
 };
+export default connectDB;
