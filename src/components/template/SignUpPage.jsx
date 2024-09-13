@@ -12,6 +12,23 @@ export default function SignUpPage() {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    const req = await fetch("/api/auth/sign-up", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      "Content-type": "application/json",
+    });
+
+    if (req.status !== 201) {
+      return;
+    }
+
+    const data = await req.json();
+    console.log("sign-up");
+  };
+
   return (
     <section className="flex justify-center items-center flex-col my-14">
       <div>
@@ -58,7 +75,10 @@ export default function SignUpPage() {
             placeholder="تکرار رمز عبور..."
           />
 
-          <button className="font-semibold mx-auto w-[250px] text-white hover:scale-105 hover:bg-green-600 bg-green-700 rounded-lg py-3 mt-5">
+          <button
+            onClick={submitHandler}
+            className="font-semibold mx-auto w-[250px] text-white hover:scale-105 hover:bg-green-600 bg-green-700 rounded-lg py-3 mt-5"
+          >
             ثبت نام
           </button>
           <p className="py-2 rounded-b-lg text-center text-sm flex items-center justify-center">
