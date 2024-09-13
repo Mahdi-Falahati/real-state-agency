@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CircleLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 import { validateEmail } from "@/utils/auth";
 
@@ -16,6 +17,7 @@ export default function SignUpPage() {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -24,10 +26,12 @@ export default function SignUpPage() {
     setInterval(() => {
       setLoading(false);
     }, 2000);
-    if (password !== rePassword)
-      return toast.error("رمز عبور وارد شده یکسان نمیباشد");
 
     if (!validateEmail(email)) return toast.error("لطفا ایمیل معتبر وارد کنید");
+    if (!password) return toast.error("لطفا رمز عبور خود را وارد کنید");
+
+    if (password !== rePassword)
+      return toast.error("رمز عبور وارد شده یکسان نمیباشد");
 
     const req = await fetch("/api/auth/sign-up", {
       method: "POST",
@@ -38,8 +42,7 @@ export default function SignUpPage() {
     const data = await req.json();
 
     if (req.status !== 201) return toast.error(data.error);
-
-    setLoading(false);
+    router.replace("/sign-in");
   };
 
   return (
