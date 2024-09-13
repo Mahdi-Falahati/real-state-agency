@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { ToastContainer, toast } from "react-toastify";
+
 import { FiHash } from "react-icons/fi";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
+import { validateEmail } from "@/utils/auth";
 
 export default function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -15,18 +18,20 @@ export default function SignUpPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    if (password !== rePassword)
+      return toast.error("رمز عبور وارد شده یکسان نمیباشد");
+
+    if (!validateEmail(email)) return toast.error("لطفا ایمیل معتبر وارد کنید");
+
     const req = await fetch("/api/auth/sign-up", {
       method: "POST",
       body: JSON.stringify({ email, password }),
       "Content-type": "application/json",
     });
 
-    if (req.status !== 201) {
-      return;
-    }
-
     const data = await req.json();
-    console.log("sign-up");
+
+    if (req.status !== 201) return toast.error(data.error);
   };
 
   return (
@@ -93,6 +98,12 @@ export default function SignUpPage() {
           </p>
         </form>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        limit={1}
+        rtl={true}
+      />
     </section>
   );
 }
