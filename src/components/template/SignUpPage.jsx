@@ -1,9 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+
 import { FiHash } from "react-icons/fi";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 
 export default function SignUpPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+
   return (
     <section className="flex justify-center items-center flex-col my-14">
       <div>
@@ -16,6 +24,8 @@ export default function SignUpPage() {
             ایمیل
           </label>
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className={inputStyles}
             type="text"
             id="email"
@@ -27,6 +37,8 @@ export default function SignUpPage() {
             رمز عبور
           </label>
           <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className={inputStyles}
             type="password"
             id="password"
@@ -38,6 +50,8 @@ export default function SignUpPage() {
             تکرار رمز عبور
           </label>
           <input
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
             className={inputStyles}
             type="password"
             id="repeatPassword"
