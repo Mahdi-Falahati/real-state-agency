@@ -5,7 +5,6 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { CircleLoader } from "react-spinners";
-import { useRouter } from "next/navigation";
 
 import { validateEmail } from "@/utils/auth";
 
@@ -17,7 +16,6 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -37,7 +35,7 @@ export default function SignInPage() {
     });
 
     if (res.error) return toast.error(res.error);
-    router.replace("/");
+    window.location.reload();
   };
 
   return (
