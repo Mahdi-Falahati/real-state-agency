@@ -6,11 +6,7 @@ import connectDB from "@/utils/connectDB";
 
 export default async function Dashboard() {
   await connectDB();
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    return redirect("/sign-in");
-  }
+  
 
   return <DashboardPage />;
 }
