@@ -14,7 +14,7 @@ export default function TextInput({
     setProfileData({ ...profileData, [name]: p2e(value) });
   };
   return textarea ? (
-    <div class="w-full sm:w-96">
+    <div class="w-full sm:w-96 my-3">
       <div class="relative w-full min-w-[200px]">
         <textarea
           name={name}
@@ -29,7 +29,7 @@ export default function TextInput({
       </div>
     </div>
   ) : (
-    <div class="w-full max-w-sm min-w-[200px] sm:min-w-[350px]">
+    <div class="w-full max-w-sm min-w-[200px] sm:min-w-[350px] my-3">
       <div class="relative">
         <input
           type="text"
