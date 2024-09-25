@@ -1,5 +1,7 @@
 "use client";
 
+import { p2e } from "@/utils/replaceNmber";
+
 export default function TextInput({
   title,
   name,
@@ -9,7 +11,7 @@ export default function TextInput({
 }) {
   const ChangeValueHandler = (e) => {
     const { value, name } = e.target;
-    setProfileData({ ...profileData, [name]: value });
+    setProfileData({ ...profileData, [name]: p2e(value) });
   };
   return textarea ? (
     <div class="w-full sm:w-96">
