@@ -10,6 +10,12 @@ export default function TextList({
   title,
   icon,
 }) {
+  const addHandler = () => {
+    const cpy = { ...profileData };
+    cpy[typeTextList].push("");
+    setProfileData(cpy);
+  };
+
   return (
     <section className="my-5 font-semibold text-gray-800">
       <h2 className="flex text-xl">
@@ -26,7 +32,10 @@ export default function TextList({
           </button>
         </div>
       ))}
-      <button className="w-[180px] sm:w-[300px] rounded-lg flex justify-center items-center bg-indigo-700 hover:bg-indigo-600 text-white h-8">
+      <button
+        onClick={addHandler}
+        className="w-[180px] sm:w-[300px] rounded-lg flex justify-center items-center bg-indigo-700 hover:bg-indigo-600 text-white h-8"
+      >
         افزودن
         <BiAddToQueue className="mr-2 text-xl   " />
       </button>
