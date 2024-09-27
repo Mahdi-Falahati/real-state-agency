@@ -16,6 +16,11 @@ export default function TextList({
     setProfileData(cpy);
   };
 
+  const changeHandler = (e, index) => {
+    const value = (profileData[typeTextList][index] = e.target.value);
+    setProfileData({ ...profileData, value });
+  };
+
   return (
     <section className="my-5 font-semibold text-gray-800">
       <h2 className="flex text-xl">
@@ -25,7 +30,12 @@ export default function TextList({
       {profileData[typeTextList]?.map((item, index) => (
         <div className="flex items-center" key={index}>
           <section class=" w-[180px] sm:w-[300px] my-3 border-double border-4 border-stone-500 rounded-md py-1 px-2">
-            <input type="text" className="w-full outline-none border-none" />
+            <input
+              value={item}
+              type="text"
+              onChange={(e) => changeHandler(e, index)}
+              className="w-full outline-none border-none"
+            />
           </section>
           <button className="mr-2 text-xl flex justify-center items-center text-white bg-red-700 h-10 w-10 rounded-lg">
             <BsFillTrash3Fill />
