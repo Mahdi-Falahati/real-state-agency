@@ -20,7 +20,7 @@ export default function AddProfilePage() {
     phone: "",
     price: "",
     realState: "",
-    cunstructionDate: new Date(),
+    constructionDate: new Date(),
     category: "villa",
     rules: [],
     amenities: [],

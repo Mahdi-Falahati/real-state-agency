@@ -6,7 +6,7 @@ import { BsCalendar4Week } from "react-icons/bs";
 export default function CustomDatePicker({ profileData, setProfileData }) {
   const changeHandler = (e) => {
     const date = new Date(e);
-    setProfileData({ ...profileData, cunstructionDate: date });
+    setProfileData({ ...profileData, constructionDate: date });
   };
 
   return (
@@ -22,7 +22,7 @@ export default function CustomDatePicker({ profileData, setProfileData }) {
       >
         <DatePicker
           inputClass="border-none outline-none text-center w-full"
-          value={profileData.cunstructionDate}
+          value={profileData.constructionDate}
           calendar={persian}
           locale={persian_fa}
           onChange={changeHandler}

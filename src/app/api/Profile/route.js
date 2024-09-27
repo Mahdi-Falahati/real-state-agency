@@ -27,7 +27,7 @@ export async function POST(req) {
       phone,
       price,
       realState,
-      cunstructionDate,
+      constructionDate,
       category,
       rules,
       amenities,
@@ -54,7 +54,7 @@ export async function POST(req) {
       !location ||
       !phone ||
       !realState ||
-      !cunstructionDate ||
+      !constructionDate ||
       !category
     ) {
       return NextResponse.json(
@@ -70,12 +70,13 @@ export async function POST(req) {
       phone,
       price: +price,
       realState,
-      cunstructionDate,
+      constructionDate,
       category,
       rules,
       amenities,
       userId: new Types.ObjectId(user._id),
     });
+    console.log(newProfile);
 
     return NextResponse.json(
       { message: "آکهی با موفقیت ثبت شد!" },
