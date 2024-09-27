@@ -26,6 +26,20 @@ export default function AddProfilePage() {
     amenities: [],
   });
 
+  const submitHandler = async () => {
+    const res = await fetch("/api/profile", {
+      method: "POST",
+      body: JSON.stringify(profileData),
+      header: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    if (data.error) {
+      console.log(data);
+    } else {
+      console.log(data);
+    }
+  };
   return (
     <div className="flex flex-col items-center my-14 md:my-0">
       <h2 className="font-semibold text-2xl flex items-center justify-start  w-full max-w-sm min-w-[200px] sm:min-w-[350px] ">
@@ -94,7 +108,10 @@ export default function AddProfilePage() {
         setProfileData={setProfileData}
       />
 
-      <button className="max-w-sm min-w-[200px] bg-green-600 text-white sm:min-w-[375px] rounded-lg py-1 text-xl font-semibold my-5 border-double border-4 border-white hover:border-green-600">
+      <button
+        onClick={submitHandler}
+        className="max-w-sm min-w-[200px] bg-green-600 text-white sm:min-w-[375px] rounded-lg py-1 text-xl font-semibold my-5 border-double border-4 border-white hover:border-green-600"
+      >
         ثبت آگهی
       </button>
     </div>
