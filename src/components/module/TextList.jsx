@@ -21,6 +21,12 @@ export default function TextList({
     setProfileData({ ...profileData, value });
   };
 
+  const deleteHandler = (index) => {
+    const cpy = { ...profileData };
+    cpy[typeTextList].splice(index, 1);
+    setProfileData(cpy);
+  };
+
   return (
     <section className="my-5 font-semibold text-gray-800">
       <h2 className="flex text-xl">
@@ -37,7 +43,10 @@ export default function TextList({
               className="w-full outline-none border-none"
             />
           </section>
-          <button className="mr-2 text-xl flex justify-center items-center text-white bg-red-700 h-10 w-10 rounded-lg">
+          <button
+            onClick={() => deleteHandler(index)}
+            className="mr-2 text-xl flex justify-center items-center text-white bg-red-700 h-10 w-10 rounded-lg"
+          >
             <BsFillTrash3Fill />
           </button>
         </div>
