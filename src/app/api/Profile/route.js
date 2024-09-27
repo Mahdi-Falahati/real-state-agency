@@ -1,4 +1,5 @@
 import User from "@/models/User";
+import { isNumeric } from "@/utils/auth";
 import connectDB from "@/utils/connectDB";
 
 import { getServerSession } from "next-auth";
@@ -35,6 +36,28 @@ export async function POST(req) {
       return NextResponse.json(
         { error: "حساب کاربری شما یافت نشد" },
         { status: 404 }
+      );
+    }
+
+    if (!isNumeric(price)) {
+      return NextResponse.json(
+        { error: "لطفا اطلاعات معتبر وارد کنید" },
+        { status: 400 }
+      );
+    }
+
+    if (
+      !title ||
+      !description ||
+      !location ||
+      !phone ||
+      !realState ||
+      !cunstructionDate ||
+      !category
+    ) {
+      return NextResponse.json(
+        { error: "لطفا اطلاعات معتبر وارد کنید" },
+        { status: 400 }
       );
     }
   } catch (error) {
