@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-
 import TextInput from "@/module/TextInput";
 
 import { BiDetail } from "react-icons/bi";
@@ -13,6 +12,7 @@ import TextList from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
 import { toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 export default function AddProfilePage() {
   const [loading, setLoading] = useState(false);
@@ -28,6 +28,7 @@ export default function AddProfilePage() {
     rules: [],
     amenities: [],
   });
+  const router = useRouter();
 
   const submitHandler = async () => {
     setLoading(true);
@@ -41,11 +42,14 @@ export default function AddProfilePage() {
     if (data.error) {
       toast.error(data.error);
     } else {
+      setInterval(() => {
+        router.push("/dashboard/my-profiles");
+      }, 2000);
       toast.success(data.message);
     }
     setLoading(false);
   };
-  console.log(profileData);
+
   return (
     <div className="flex flex-col items-center my-14 md:my-0">
       <h2 className="font-semibold text-2xl flex items-center justify-start  w-full max-w-sm min-w-[200px] sm:min-w-[350px] ">
