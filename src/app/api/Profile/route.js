@@ -14,6 +14,20 @@ export async function POST(req) {
         { status: "401" }
       );
     }
+
+    const body = await req.json();
+    const {
+      title,
+      description,
+      location,
+      phone,
+      price,
+      realState,
+      cunstructionDate,
+      category,
+      rules,
+      amenities,
+    } = body;
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
