@@ -43,7 +43,7 @@ const profileSchema = new Schema(
       type: [String],
       default: [],
     },
-    uerId: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
