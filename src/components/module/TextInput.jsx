@@ -27,7 +27,7 @@ export default function TextInput({
             <textarea
               placeholder={`${title} را وارد کنید ...`}
               name={name}
-              value={profileData[name].value}
+              value={profileData[name]}
               onChange={ChangeValueHandler}
               class="peer h-full min-h-[120px] w-full resize-none p-2 focus:outline-none"
             ></textarea>
@@ -39,7 +39,7 @@ export default function TextInput({
               type="text"
               id={name}
               name={name}
-              value={profileData[name].value}
+              value={profileData[name]}
               onChange={ChangeValueHandler}
               className="w-full outline-none border-none"
             />

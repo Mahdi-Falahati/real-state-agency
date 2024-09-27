@@ -12,7 +12,6 @@ import TextList from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
 import { toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
-import { useRouter } from "next/navigation";
 
 export default function AddProfilePage() {
   const [loading, setLoading] = useState(false);
@@ -28,7 +27,6 @@ export default function AddProfilePage() {
     rules: [],
     amenities: [],
   });
-  const router = useRouter();
 
   const submitHandler = async () => {
     setLoading(true);
@@ -42,11 +40,20 @@ export default function AddProfilePage() {
     if (data.error) {
       toast.error(data.error);
     } else {
-      setInterval(() => {
-        router.push("/dashboard/my-profiles");
-      }, 2000);
       toast.success(data.message);
     }
+    setProfileData({
+      title: "",
+      description: "",
+      location: "",
+      phone: "",
+      price: "",
+      realState: "",
+      constructionDate: new Date(),
+      category: "villa",
+      rules: [],
+      amenities: [],
+    });
     setLoading(false);
   };
 
