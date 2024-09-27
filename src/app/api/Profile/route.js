@@ -40,8 +40,7 @@ export async function POST(req) {
         { status: 404 }
       );
     }
-
-    if (!isNumeric(price) && !isNumeric(phone)) {
+    if (!isNumeric(price) || !isNumeric(phone)) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر وارد کنید" },
         { status: 400 }
@@ -82,6 +81,7 @@ export async function POST(req) {
       { status: 201 }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
       { status: 500 }
