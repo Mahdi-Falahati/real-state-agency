@@ -41,7 +41,7 @@ export async function POST(req) {
       );
     }
 
-    if (!isNumeric(price)) {
+    if (!isNumeric(price) && !isNumeric(phone)) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر وارد کنید" },
         { status: 400 }
