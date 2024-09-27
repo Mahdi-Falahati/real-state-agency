@@ -1,3 +1,4 @@
+import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 
 import { getServerSession } from "next-auth";
@@ -11,7 +12,7 @@ export async function POST(req) {
     if (!session) {
       return NextResponse.json(
         { error: "لطفا اول وارد حساب کاربری خود شود" },
-        { status: "401" }
+        { status: 401 }
       );
     }
 
@@ -28,6 +29,14 @@ export async function POST(req) {
       rules,
       amenities,
     } = body;
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user) {
+      return NextResponse.json(
+        { error: "حساب کاربری شما یافت نشد" },
+        { status: 404 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
