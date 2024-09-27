@@ -19,4 +19,9 @@ const validateEmail = (email) => {
   return isValid;
 };
 
-export { hashPassword, verifyPassword, validateEmail };
+function isNumeric(str) {
+  if (typeof str != "string") return false;
+  return !isNaN(str) && !isNaN(parseFloat(str));
+}
+
+export { hashPassword, verifyPassword, validateEmail, isNumeric };
