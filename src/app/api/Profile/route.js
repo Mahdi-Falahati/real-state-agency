@@ -76,7 +76,6 @@ export async function POST(req) {
       amenities,
       userId: new Types.ObjectId(user._id),
     });
-    console.log(newProfile);
 
     return NextResponse.json(
       { message: "آکهی با موفقیت ثبت شد!" },
