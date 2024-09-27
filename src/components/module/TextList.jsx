@@ -28,14 +28,14 @@ export default function TextList({
   };
 
   return (
-    <section className="my-5 font-semibold text-gray-800">
+    <section className="my-5 font-semibold w-full text-gray-800 max-w-sm min-w-[200px] sm:min-w-[350px]">
       <h2 className="flex text-xl">
         {icon}
         {title} :
       </h2>
       {profileData[typeTextList]?.map((item, index) => (
         <div className="flex items-center" key={index}>
-          <section class=" w-[180px] sm:w-[300px] my-3 border-double border-4 border-stone-500 rounded-md py-1 px-2">
+          <section class=" w-full my-3 border-double border-4 border-stone-500 rounded-md py-1 px-2">
             <input
               value={item}
               type="text"
