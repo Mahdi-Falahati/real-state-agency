@@ -11,8 +11,11 @@ import { IoHome } from "react-icons/io5";
 import RadioList from "@/module/RadioList";
 import TextList from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
+import { toast, ToastContainer } from "react-toastify";
+import { BeatLoader } from "react-spinners";
 
 export default function AddProfilePage() {
+  const [loading, setLoading] = useState(false);
   const [profileData, setProfileData] = useState({
     title: "",
     description: "",
@@ -27,6 +30,7 @@ export default function AddProfilePage() {
   });
 
   const submitHandler = async () => {
+    setLoading(true);
     const res = await fetch("/api/profile", {
       method: "POST",
       body: JSON.stringify(profileData),
@@ -35,11 +39,13 @@ export default function AddProfilePage() {
 
     const data = await res.json();
     if (data.error) {
-      console.log(data);
+      toast.error(data.error);
     } else {
-      console.log(data);
+      toast.success(data.message);
     }
+    setLoading(false);
   };
+  console.log(profileData);
   return (
     <div className="flex flex-col items-center my-14 md:my-0">
       <h2 className="font-semibold text-2xl flex items-center justify-start  w-full max-w-sm min-w-[200px] sm:min-w-[350px] ">
@@ -107,13 +113,23 @@ export default function AddProfilePage() {
         profileData={profileData}
         setProfileData={setProfileData}
       />
-
-      <button
-        onClick={submitHandler}
-        className="max-w-sm min-w-[200px] bg-green-600 text-white sm:min-w-[375px] rounded-lg py-1 text-xl font-semibold my-5 border-double border-4 border-white hover:border-green-600"
-      >
-        ثبت آگهی
-      </button>
+      <div className="max-w-sm min-w-[200px] sm:min-w-[375px]  text-xl font-semibold my-5">
+        {loading ? (
+          <BeatLoader
+            color="green"
+            cssOverride={{ margin: "25px auto", textAlign: "center" }}
+            loading
+          />
+        ) : (
+          <button
+            onClick={submitHandler}
+            className="w-full bg-green-600 text-white rounded-lg py-1 border-double border-4 border-white hover:border-green-600"
+          >
+            ثبت آگهی
+          </button>
+        )}
+      </div>
+      <ToastContainer position="top-center" limit={1} rtl={true} />
     </div>
   );
 }
