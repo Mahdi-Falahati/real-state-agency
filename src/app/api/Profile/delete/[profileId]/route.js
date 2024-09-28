@@ -1,4 +1,7 @@
+import Profile from "@/models/Profile";
+import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
+import { getServerSession } from "next-auth";
 
 export async function DELETE(req, context) {
   try {
@@ -25,6 +28,8 @@ export async function DELETE(req, context) {
         { status: 404 }
       );
     }
+
+    const profile = await Profile.findOne({ _id: id });
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
