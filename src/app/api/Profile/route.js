@@ -89,4 +89,13 @@ export async function POST(req) {
   }
 }
 
-export async function PATCH(req) {}
+export async function PATCH(req) {
+  try {
+    await connectDB();
+  } catch (error) {
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
+  }
+}
