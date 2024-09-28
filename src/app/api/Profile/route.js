@@ -19,7 +19,6 @@ export async function POST(req) {
       );
     }
 
-    const body = await req.json();
     const {
       title,
       description,
@@ -31,7 +30,7 @@ export async function POST(req) {
       category,
       rules,
       amenities,
-    } = body;
+    } = await req.json();
 
     const user = await User.findOne({ email: session.user.email });
     if (!user) {
@@ -100,6 +99,20 @@ export async function PATCH(req) {
         { status: 401 }
       );
     }
+
+    const {
+      _id,
+      title,
+      description,
+      location,
+      phone,
+      price,
+      realState,
+      constructionDate,
+      category,
+      rules,
+      amenities,
+    } = await req.json();
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
