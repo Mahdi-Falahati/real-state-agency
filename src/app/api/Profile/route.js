@@ -113,6 +113,14 @@ export async function PATCH(req) {
       rules,
       amenities,
     } = await req.json();
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user) {
+      return NextResponse.json(
+        { error: "حساب کاربری شما یافت نشد" },
+        { status: 404 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
