@@ -121,6 +121,29 @@ export async function PATCH(req) {
         { status: 404 }
       );
     }
+
+    if (!isNumeric(price) || !isNumeric(phone)) {
+      return NextResponse.json(
+        { error: "لطفا اطلاعات معتبر وارد کنید" },
+        { status: 400 }
+      );
+    }
+
+    if (
+      !_id ||
+      !title ||
+      !description ||
+      !location ||
+      !phone ||
+      !realState ||
+      !constructionDate ||
+      !category
+    ) {
+      return NextResponse.json(
+        { error: "لطفا اطلاعات معتبر وارد کنید" },
+        { status: 400 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
