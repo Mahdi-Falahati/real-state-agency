@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextInput from "@/module/TextInput";
 
 import { BiDetail } from "react-icons/bi";
@@ -13,7 +13,7 @@ import CustomDatePicker from "@/module/CustomDatePicker";
 import { toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
 
-export default function AddProfilePage() {
+export default function AddProfilePage({ data }) {
   const [loading, setLoading] = useState(false);
   const [profileData, setProfileData] = useState({
     title: "",
@@ -27,6 +27,12 @@ export default function AddProfilePage() {
     rules: [],
     amenities: [],
   });
+
+  useEffect(() => {
+    if (data) {
+      setProfileData(data);
+    }
+  }, [data]);
 
   const submitHandler = async () => {
     setLoading(true);
@@ -57,11 +63,13 @@ export default function AddProfilePage() {
     setLoading(false);
   };
 
+  const editHandler = () => {};
+
   return (
     <div className="flex flex-col items-center my-14 md:my-0">
       <h2 className="font-semibold text-2xl flex items-center justify-start  w-full max-w-sm min-w-[200px] sm:min-w-[350px] ">
         <BiDetail className="ml-2" />
-        ثبت آگهی
+        {data ? "ویرایش آگهی" : "ثبت آگهی"}
       </h2>
       <TextInput
         title="عنوان آگهی "
@@ -131,6 +139,13 @@ export default function AddProfilePage() {
             cssOverride={{ margin: "25px auto", textAlign: "center" }}
             loading
           />
+        ) : data ? (
+          <button
+            onClick={editHandler}
+            className="w-full bg-green-600 text-white rounded-lg py-1 border-double border-4 border-white hover:border-green-600"
+          >
+            ویرایش آگهی
+          </button>
         ) : (
           <button
             onClick={submitHandler}
