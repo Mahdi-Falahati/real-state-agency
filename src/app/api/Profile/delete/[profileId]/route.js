@@ -40,6 +40,13 @@ export async function DELETE(req, context) {
         { status: 403 }
       );
     }
+
+    await Profile.deleteOne({ _id: id });
+
+    return NextResponse.json(
+      { message: "آگهی موردنظر حذف شد" },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
