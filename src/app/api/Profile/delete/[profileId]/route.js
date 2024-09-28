@@ -5,6 +5,16 @@ export async function DELETE(req, context) {
     await connectDB();
 
     const id = context.params.profileId;
+
+    const session = await getServerSession(req);
+    if (!session) {
+      return NextResponse.json(
+        {
+          error: "لطفا وارد حساب کاربری خود شوید",
+        },
+        { status: 401 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
