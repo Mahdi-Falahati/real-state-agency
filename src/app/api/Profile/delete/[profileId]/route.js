@@ -2,6 +2,7 @@ import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
 
 export async function DELETE(req, context) {
   try {
@@ -30,6 +31,15 @@ export async function DELETE(req, context) {
     }
 
     const profile = await Profile.findOne({ _id: id });
+
+    if (!user._id.equals(profile.userId)) {
+      return NextResponse.json(
+        {
+          error: "دستری شما به این آگهی محدود شده است",
+        },
+        { status: 403 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
