@@ -1,4 +1,6 @@
 import Link from "next/link";
+import DashboardCard from "@/module/DashboardCard";
+
 import { GiAquarium } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
 
@@ -23,6 +25,9 @@ export default function MyProfilesPage({ profiles }) {
           </div>
         </section>
       )}
+      {profiles?.map((profile) => (
+        <DashboardCard key={profile._id} data={profile} />
+      ))}
     </div>
   );
 }
