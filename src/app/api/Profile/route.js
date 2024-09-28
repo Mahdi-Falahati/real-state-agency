@@ -39,7 +39,7 @@ export async function POST(req) {
         { status: 404 }
       );
     }
-    if (!isNumeric(price) || !isNumeric(phone)) {
+    if (!isNumeric(price + "") || !isNumeric(phone + "")) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر وارد کنید" },
         { status: 400 }
@@ -122,7 +122,7 @@ export async function PATCH(req) {
       );
     }
 
-    if (!isNumeric(price) || !isNumeric(phone)) {
+    if (!isNumeric(price + "") || !isNumeric(phone + "")) {
       return NextResponse.json(
         { error: "لطفا اطلاعات معتبر وارد کنید" },
         { status: 400 }
