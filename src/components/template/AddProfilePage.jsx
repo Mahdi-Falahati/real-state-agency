@@ -12,6 +12,7 @@ import TextList from "@/module/TextList";
 import CustomDatePicker from "@/module/CustomDatePicker";
 import { toast, ToastContainer } from "react-toastify";
 import { BeatLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 export default function AddProfilePage({ data }) {
   const [loading, setLoading] = useState(false);
@@ -27,7 +28,7 @@ export default function AddProfilePage({ data }) {
     rules: [],
     amenities: [],
   });
-
+  const router = useRouter();
   useEffect(() => {
     if (data) {
       setProfileData(data);
@@ -63,7 +64,23 @@ export default function AddProfilePage({ data }) {
     setLoading(false);
   };
 
-  const editHandler = () => {};
+  const editHandler = async () => {
+    setLoading(true);
+    const res = await fetch("/api/profile", {
+      method: "PATCH",
+      body: JSON.stringify(profileData),
+      header: { "Content-Type": "application/json" },
+    });
+
+    const data = await res.json();
+    if (data.error) {
+      toast.error(data.error);
+    } else {
+      toast.success(data.message);
+    }
+    setLoading(false);
+    router.push("/dashboard/my-profiles");
+  };
 
   return (
     <div className="flex flex-col items-center my-14 md:my-0">
