@@ -153,6 +153,27 @@ export async function PATCH(req) {
         { status: 403 }
       );
     }
+
+    profile.title = title;
+    profile.description = description;
+    profile.location = location;
+    profile.phone = phone;
+    profile.realState = realState;
+    profile.price = price;
+    profile.constructionDate = constructionDate;
+    profile.amenities = amenities;
+    profile.rules = rules;
+    profile.category = category;
+    profile.save();
+
+    return NextResponse.json(
+      {
+        message: "آگهی با موفقیت ویرایش شد",
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
