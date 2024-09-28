@@ -144,6 +144,15 @@ export async function PATCH(req) {
         { status: 400 }
       );
     }
+
+    const profile = await Profile.findOne({ _id });
+
+    if (!user._id.equals(profile.userId)) {
+      return NextResponse.json(
+        { error: "دسترسی شما به این آگهی محدود شده است" },
+        { status: 403 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
