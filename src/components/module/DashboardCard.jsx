@@ -1,12 +1,16 @@
 "use client";
 
 import Card from "@/module/Card";
+import { useRouter } from "next/navigation";
 import { LuClipboardEdit } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function DashboardCard({ data }) {
+  const router = useRouter();
   const deleteHandler = () => {};
-  const editHandler = () => {};
+  const editHandler = () => {
+    router.push(`/dashboard/my-profiles/${data._id}`);
+  };
 
   return (
     <div className="my-5 shadow-inner rounded-md shadow-slate-400 pt-3">
