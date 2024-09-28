@@ -88,3 +88,5 @@ export async function POST(req) {
     );
   }
 }
+
+export async function PATCH(req) {}
