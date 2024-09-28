@@ -6,7 +6,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 
 export default function MyProfilesPage({ profiles }) {
   return (
-    <div>
+    <div className="flex justify-around items-center flex-wrap">
       {profiles.length ? null : (
         <section className="flex items-center justify-center flex-col my-14">
           <p className="flex items-center text-xl text-orange-700 font-semibold">
