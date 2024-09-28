@@ -31,6 +31,14 @@ export async function DELETE(req, context) {
     }
 
     const profile = await Profile.findOne({ _id: id });
+    if (!profile) {
+      return NextResponse.json(
+        {
+          error: "آگهی مورد نظر یافت نشد",
+        },
+        { status: 404 }
+      );
+    }
 
     if (!user._id.equals(profile.userId)) {
       return NextResponse.json(
@@ -44,7 +52,7 @@ export async function DELETE(req, context) {
     await Profile.deleteOne({ _id: id });
 
     return NextResponse.json(
-      { message: "آگهی موردنظر حذف شد" },
+      { message: "آگهی مورد نظر حذف شد" },
       { status: 200 }
     );
   } catch (error) {
