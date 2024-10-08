@@ -10,7 +10,7 @@ import ChoiceUs from "@/module/ChoiceUs";
 
 export default function HomePage() {
   return (
-    <section>
+    <section className="inline-block mt-16">
       <h1 className="text-center text-3xl font-semibold tracking-wider text-blue-950">
         آژانس مسکن فلاحتی
       </h1>
