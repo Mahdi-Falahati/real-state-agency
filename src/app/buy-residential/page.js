@@ -2,7 +2,7 @@ import Profile from "@/models/Profile";
 import BuyResidentialPage from "@/template/BuyResidentialPage";
 import connectDB from "@/utils/connectDB";
 
-export default async function BuyResidential() {
+export default async function BuyResidential({ searchParams }) {
   try {
     await connectDB();
 
@@ -15,7 +15,15 @@ export default async function BuyResidential() {
         </p>
       );
     }
-    return <BuyResidentialPage data={data.data} />;
+
+    let result = data;
+    if (searchParams.category) {
+      result = data.filter(
+        (profile) => profile.category === searchParams.category
+      );
+    }
+
+    return <BuyResidentialPage data={result} />;
   } catch (error) {
     return (
       <p className="text-red-600 text-center font-semibold text-xl tracking-wider">
