@@ -5,7 +5,7 @@ import { FiLink } from "react-icons/fi";
 export default function SideBar() {
   const quries = [
     { villa: "ویلا" },
-    { appartment: "آپارتمان" },
+    { apartment: "آپارتمان" },
     { office: "دفتر" },
     { store: "مغازه" },
   ];
