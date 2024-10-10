@@ -5,13 +5,22 @@ import connectDB from "@/utils/connectDB";
 export default async function ProfileDetails({ params: { profileId } }) {
   try {
     await connectDB();
+  } catch (error) {
+    return (
+      <p className="text-red-600 text-center font-semibold text-xl tracking-wider">
+        در سرور مشکلی رخ داده است
+      </p>
+    );
+  }
+
+  try {
     const profile = await Profile.findById(profileId);
 
     return <ProfileDetailsPage />;
   } catch (error) {
     return (
       <p className="text-red-600 text-center font-semibold text-xl tracking-wider">
-        در سرور مشکلی رخ داده است
+        همچین آگهی ثبت نشده است
       </p>
     );
   }
