@@ -1,5 +1,5 @@
 import ProfileDetailsPage from "@/template/ProfileDetailsPage";
 
-export default function ProfileDetails() {
+export default async function ProfileDetails({ params: { profileId } }) {
   return <ProfileDetailsPage />;
 }
