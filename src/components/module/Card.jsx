@@ -11,7 +11,8 @@ import { sp } from "@/utils/replaceNmber";
 import Link from "next/link";
 
 export default function Card({ data }) {
-  const { category, title, price, location } = data;
+  const { category, title, price, location, _id } = data;
+  const profileId = _id.toString();
 
   return (
     <section className="mx-2 px-2 rounded-lg shadow-md shadow-slate-400 w-[240px] sm:w-[300px] my-6 flex justify-center items-center flex-col">
@@ -30,7 +31,10 @@ export default function Card({ data }) {
           {location}
         </p>
       </div>
-      <Link href="" className="my-3 flex items-center hover:scale-105 ">
+      <Link
+        href={`buy-residential/${profileId}`}
+        className="my-3 flex items-center hover:scale-105 "
+      >
         <TiArrowBackOutline className="ml-1 text-xl" />
         مشاهده آگهی
       </Link>
