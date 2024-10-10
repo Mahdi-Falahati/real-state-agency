@@ -14,9 +14,9 @@ export default async function ProfileDetails({ params: { profileId } }) {
   }
 
   try {
-    const profile = await Profile.findById(profileId);
+    const profile = await Profile.findById(profileId).select("-userId");
 
-    return <ProfileDetailsPage />;
+    return <ProfileDetailsPage data={profile} />;
   } catch (error) {
     return (
       <p className="text-red-600 text-center font-semibold text-xl tracking-wider">
