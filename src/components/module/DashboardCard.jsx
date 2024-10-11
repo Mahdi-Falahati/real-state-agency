@@ -76,7 +76,7 @@ export default function DashboardCard({ data }) {
           </button>
         )}
       </div>
-      <Card data={data} />
+      <Card data={data} my={"2"} />
       <ToastContainer position="top-center" limit={1} rtl={true} />
     </div>
   );
