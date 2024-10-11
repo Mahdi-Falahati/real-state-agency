@@ -3,22 +3,23 @@
 import Link from "next/link";
 import DashboardCard from "@/module/DashboardCard";
 import { useEffect, useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import { GiAquarium } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 export default function MyProfilesPage() {
-  const [profiles, setProfiles] = useState([]);
+  const [profiles, setProfiles] = useState({ data: [], loading: false });
 
   useEffect(() => {
     fetch("/api/profile")
       .then((res) => res.json())
-      .then((data) => setProfiles(data.data));
+      .then((data) => setProfiles({ data: data.data, loading: true }));
   }, []);
 
   return (
-    <div className="flex justify-around items-center flex-wrap">
-      {profiles.length ? null : (
+    <>
+      {profiles.loading && profiles.length === 0 ? (
         <section className="flex items-center justify-center flex-col my-14">
           <p className="flex items-center text-xl text-orange-700 font-semibold">
             هیچ آگهی ثبت نشده است
@@ -35,13 +36,22 @@ export default function MyProfilesPage() {
             </Link>
           </div>
         </section>
+      ) : null}
+      {!profiles.loading ? (
+        <p className="flex justify-center items-center text-green-700 tracking-wider font-semibold">
+          در حال گرفتن آگهی ها کمی صبر کنید
+          <AiOutlineLoading3Quarters className="mr-1 animate-spin text-xl" />
+        </p>
+      ) : (
+        <div className="flex justify-around items-center flex-wrap">
+          {profiles.data?.map((profile) => (
+            <DashboardCard
+              key={profile._id}
+              data={JSON.parse(JSON.stringify(profile))}
+            />
+          ))}
+        </div>
       )}
-      {profiles?.map((profile) => (
-        <DashboardCard
-          key={profile._id}
-          data={JSON.parse(JSON.stringify(profile))}
-        />
-      ))}
-    </div>
+    </>
   );
 }
