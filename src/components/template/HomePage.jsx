@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="w-full sm:w-[400px] md:w-[600px]">
           <ChoiceUs
             title="امنیت در معامله"
-            position="start"
+            positionX={"justify-start"}
             icon={
               <MdOutlineSecurity className={`text-green-400 ${iconStyles}`} />
             }
@@ -72,7 +72,7 @@ export default function HomePage() {
 
           <ChoiceUs
             title="قیمت های مناسب"
-            position="center"
+            positionX={"justify-center"}
             icon={
               <FaMoneyBillTrendUp className={`text-yellow-400 ${iconStyles}`} />
             }
@@ -80,7 +80,7 @@ export default function HomePage() {
 
           <ChoiceUs
             title="قرار داد های نظارت شده"
-            position="end"
+            positionX={"justify-end"}
             icon={<RiContractLine className={`text-red-500 ${iconStyles}`} />}
           />
         </div>
