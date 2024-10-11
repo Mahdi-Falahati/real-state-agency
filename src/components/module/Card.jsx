@@ -10,7 +10,7 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { sp } from "@/utils/replaceNmber";
 import Link from "next/link";
 
-export default function Card({ data, my = 7 }) {
+export default function Card({ data, my = "7" }) {
   const { category, title, price, location, _id } = data;
   const profileId = _id.toString();
 
