@@ -32,7 +32,7 @@ export default function Card({ data }) {
         </p>
       </div>
       <Link
-        href={`buy-residential/${profileId}`}
+        href={`/buy-residential/${profileId}`}
         className="my-3 flex items-center hover:scale-105 "
       >
         <TiArrowBackOutline className="ml-1 text-xl" />
