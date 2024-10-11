@@ -1,10 +1,21 @@
+"use client";
+
 import Link from "next/link";
 import DashboardCard from "@/module/DashboardCard";
+import { useEffect, useState } from "react";
 
 import { GiAquarium } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-export default function MyProfilesPage({ profiles }) {
+export default function MyProfilesPage() {
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/profile")
+      .then((res) => res.json())
+      .then((data) => setProfiles(data.data));
+  }, []);
+
   return (
     <div className="flex justify-around items-center flex-wrap">
       {profiles.length ? null : (
