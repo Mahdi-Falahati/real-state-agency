@@ -12,7 +12,7 @@ export default function BuyResidentialPage({ data }) {
           </p>
         )}
         {data?.map((item) => (
-          <Card key={item._id} data={item} />
+          <Card key={item._id} data={item} margin={"my-7"} />
         ))}
       </div>
     </div>

@@ -10,13 +10,13 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { sp } from "@/utils/replaceNmber";
 import Link from "next/link";
 
-export default function Card({ data, my = "7" }) {
+export default function Card({ data, margin = "" }) {
   const { category, title, price, location, _id } = data;
   const profileId = _id.toString();
 
   return (
     <section
-      className={`mx-2 px-2 rounded-lg shadow-md shadow-slate-400 w-[240px] sm:w-[300px] my-${my} flex justify-center items-center flex-col`}
+      className={`mx-2 px-2 rounded-lg shadow-md shadow-slate-400 w-[240px] sm:w-[300px] ${margin} flex justify-center items-center flex-col`}
     >
       {icons[category]}
       <h2 className=" my-2 text-xl font-semibold text-gray-700">{title}</h2>
