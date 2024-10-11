@@ -14,12 +14,12 @@ export default function HomePage() {
       <h1 className="text-center text-3xl font-semibold tracking-wider text-blue-950">
         آژانس مسکن فلاحتی
       </h1>
-      <div class="flex justify-center font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 to-50% to-slate-200">
+      <div className="flex justify-center font-extrabold text-3xl md:text-4xl [text-wrap:balance] bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 to-50% to-slate-200">
         <h2 className="text-center text-2xl font-semibold tracking-wider text-blue-950">
           سامانه
         </h2>
-        <span class="text-indigo-500 inline-flex flex-col h-[35px]  overflow-hidden">
-          <ul class="mx-4 animate-text-slide text-center">
+        <span className="text-indigo-500 inline-flex flex-col h-[35px]  overflow-hidden">
+          <ul className="mx-4 animate-text-slide text-center">
             {services?.map((service, index) => (
               <li className="text-2xl" key={index}>
                 {service}
