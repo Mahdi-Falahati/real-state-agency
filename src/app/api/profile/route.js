@@ -181,3 +181,45 @@ export async function PATCH(req) {
     );
   }
 }
+
+export async function GET(req) {
+  try {
+    await connectDB();
+
+    const session = await getServerSession(req);
+    if (!session) {
+      return NextResponse.json(
+        { error: "لطفا اول وارد حساب کاربری خود شود" },
+        { status: 401 }
+      );
+    }
+
+    const checkUser = await User.findOne({ email: session.user.email });
+    if (!checkUser) {
+      return NextResponse.json(
+        { error: "حساب کاربری شما یافت نشد" },
+        { status: 404 }
+      );
+    }
+
+    const [user] = await User.aggregate([
+      { $match: { email: session.user.email } },
+      {
+        $lookup: {
+          from: "profiles",
+          foreignField: "userId",
+          localField: "_id",
+          as: "profiles",
+        },
+      },
+    ]);
+
+    return NextResponse.json({ data: user.profiles }, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { error: "مشکلی در سرور رخ داده است" },
+      { status: 500 }
+    );
+  }
+}
