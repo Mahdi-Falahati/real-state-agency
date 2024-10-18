@@ -19,7 +19,7 @@ export default function MyProfilesPage() {
 
   return (
     <>
-      {profiles.loading && profiles.length === 0 ? (
+      {profiles.loading && profiles.data.length === 0 ? (
         <section className="flex items-center justify-center flex-col my-14">
           <p className="flex items-center text-xl text-orange-700 font-semibold">
             هیچ آگهی ثبت نشده است
