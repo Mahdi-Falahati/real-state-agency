@@ -14,6 +14,10 @@ const userSchema = new Schema({
     default: () => Date.now(),
     immutable: true,
   },
+  role: {
+    type: String,
+    default: "USER",
+  },
 });
 
 const User = models.User || model("User", userSchema);
