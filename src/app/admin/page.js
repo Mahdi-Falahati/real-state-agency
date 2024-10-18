@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import User from "@/models/User";
+import AdminPage from "@/template/AdminPage";
 
 export default async function Admin({ children }) {
   const session = await getServerSession(authOptions);
@@ -12,7 +13,7 @@ export default async function Admin({ children }) {
 
   return (
     <DashboardSideBar email={user.email} role={user.role}>
-      {children}
+      <AdminPage />
     </DashboardSideBar>
   );
 }
