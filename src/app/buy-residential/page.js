@@ -6,7 +6,7 @@ export default async function BuyResidential({ searchParams }) {
   try {
     await connectDB();
 
-    const data = await Profile.find().select("-userId");
+    const data = await Profile.find({ published: true }).select("-userId");
 
     if (data.length === 0) {
       return (
