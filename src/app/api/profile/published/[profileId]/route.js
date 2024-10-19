@@ -40,7 +40,16 @@ export async function PATCH(req, context) {
       );
     }
 
-    const profile = await Profile.findById(id.trim());
+    const profile = await Profile.findById(id);
+    if (!profile) {
+      return NextResponse.json(
+        {
+          error: "آگهی مورد نظر یافت نشد",
+        },
+        { status: 200 }
+      );
+    }
+
     profile.published = true;
     profile.save();
 
