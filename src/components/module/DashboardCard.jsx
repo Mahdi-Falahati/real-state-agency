@@ -2,14 +2,12 @@
 
 import Card from "@/module/Card";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { LuClipboardEdit } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { toast, ToastContainer } from "react-toastify";
 import { PulseLoader } from "react-spinners";
 
 export default function DashboardCard({ data }) {
-  const router = useRouter();
   const [loading, setLoading] = useState({ e: false, r: false });
 
   const deleteHandler = async () => {
@@ -24,7 +22,7 @@ export default function DashboardCard({ data }) {
     } else {
       toast.success(res.message);
       setInterval(() => {
-        router.refresh();
+        window.location.reload();
       }, 1000);
     }
     setLoading({ ...loading, r: false });
