@@ -11,6 +11,7 @@ import { MdOutlineRealEstateAgent } from "react-icons/md";
 import { TiPhoneOutline } from "react-icons/ti";
 import { MdOutlineDateRange } from "react-icons/md";
 import ShareBTN from "@/module/ShareBTN";
+import BackBTN from "@/module/BackBTN";
 
 export default function ProfileDetailsPage({ data }) {
   const {
@@ -25,9 +26,11 @@ export default function ProfileDetailsPage({ data }) {
     price,
     constructionDate,
   } = data;
+
   return (
     <section className="flex justify-around flex-wrap px-2 mb-10">
       <div className="flex flex-col basis-full md:basis-2/3">
+        <BackBTN />
         <h1 className="text-indigo-800 text-4xl font-semibold tracking-wider my-2">
           {title}
         </h1>
@@ -47,14 +50,26 @@ export default function ProfileDetailsPage({ data }) {
           امکانات
         </h3>
         <ul className="m-2 list-disc">
-          <ItemList data={amenities} />
+          {amenities.length === 0 ? (
+            <p className="text-gray-500 font-semibold my-5">
+              هیچ امکاناتی برای این آگهی قید نشده است
+            </p>
+          ) : (
+            <ItemList data={amenities} />
+          )}
         </ul>
         <h3 className="text-indigo-800 flex items-center mt-7 text-2xl font-semibold border-b border-solid border-gray-500">
           <GiCctvCamera className="ml-1" />
           قوانین
         </h3>
         <ul className="m-2 list-decimal">
-          <ItemList data={rules} />
+          {rules.length === 0 ? (
+            <p className="text-gray-500 font-semibold my-5">
+              هیچ قوانینی برای این آگهی قید نشده است
+            </p>
+          ) : (
+            <ItemList data={rules} />
+          )}
         </ul>
       </div>
       <div className="flex flex-col basis-full md:basis-1/4 mt-10 md:mt-0">
