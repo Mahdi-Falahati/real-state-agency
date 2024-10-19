@@ -5,8 +5,10 @@ import { redirect } from "next/navigation";
 import User from "@/models/User";
 import AdminPage from "@/template/AdminPage";
 import Profile from "@/models/Profile";
+import connectDB from "@/utils/connectDB";
 
-export default async function Admin({ children }) {
+export default async function Admin() {
+  await connectDB();
   const session = await getServerSession(authOptions);
   if (!session) return redirect("/sign-in");
   const user = await User.findOne({ email: session.user.email });
