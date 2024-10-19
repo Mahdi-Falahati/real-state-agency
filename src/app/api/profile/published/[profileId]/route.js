@@ -46,7 +46,7 @@ export async function PATCH(req, context) {
 
     return NextResponse.json(
       {
-        error: "آگهی با موفقیت انتشار پیدا کرد",
+        message: "آگهی با موفقیت انتشار پیدا کرد",
       },
       { status: 200 }
     );
