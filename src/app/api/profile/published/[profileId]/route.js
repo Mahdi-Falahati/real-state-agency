@@ -1,5 +1,7 @@
+import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
+import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
@@ -16,6 +18,8 @@ export async function PATCH(req, context) {
         { status: 401 }
       );
     }
+
+    const id = context.params.profileId;
 
     const user = await User.findOne({ email: session.user.email });
     if (!user) {
@@ -36,7 +40,10 @@ export async function PATCH(req, context) {
       );
     }
 
-    const id = context.params.profileId;
+    const profile = await Profile.findById(id.trim());
+    profile.published = true;
+    profile.save();
+
     return NextResponse.json(
       {
         error: "آگهی با موفقیت انتشار پیدا کرد",
