@@ -3,7 +3,7 @@ import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req) {
+export async function PATCH(req, context) {
   try {
     await connectDB();
 
@@ -36,6 +36,7 @@ export async function PATCH(req) {
       );
     }
 
+    const id = context.params.profileId;
     return NextResponse.json(
       {
         error: "آگهی با موفقیت انتشار پیدا کرد",
