@@ -38,7 +38,7 @@ export default function DashboardCard({ data }) {
   };
 
   return (
-    <div className="flex  flex-col items-center my-5 shadow-inner rounded-md shadow-slate-400 pt-3">
+    <div className="flex  flex-col items-center my-5 mx-1 shadow-inner rounded-md shadow-slate-400 pt-3">
       <div className="flex justify-around font-medium items-center w-full">
         {loading.r ? (
           <PulseLoader
