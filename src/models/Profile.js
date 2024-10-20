@@ -57,6 +57,7 @@ const profileSchema = new Schema(
     },
     message: {
       type: String,
+      default: "",
     },
   },
   { timestamps: true }
