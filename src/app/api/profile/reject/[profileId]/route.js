@@ -48,6 +48,26 @@ export async function PATCH(req, context) {
         { status: 200 }
       );
     }
+
+    if (!message) {
+      return NextResponse.json(
+        {
+          error: "لطفا پیام رد شدن آگهی را خالی نگذارید",
+        },
+        { status: 200 }
+      );
+    }
+
+    profile.message = message;
+    profile.reject = true;
+    profile.save();
+
+    return NextResponse.json(
+      {
+        message: "آگهی با موفقیت رد شد",
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
