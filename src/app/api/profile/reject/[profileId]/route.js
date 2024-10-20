@@ -1,3 +1,4 @@
+import Profile from "@/models/Profile";
 import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
