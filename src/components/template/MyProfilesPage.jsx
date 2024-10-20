@@ -10,6 +10,7 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 
 import { GiAquarium } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
+import Loading from "@/module/Loading";
 
 export default function MyProfilesPage() {
   const [profiles, setProfiles] = useState({
@@ -64,10 +65,7 @@ export default function MyProfilesPage() {
         </section>
       ) : null}
       {!profiles.loading ? (
-        <p className="flex justify-center items-center text-green-700 tracking-wider font-semibold">
-          در حال گرفتن آگهی ها کمی صبر کنید
-          <AiOutlineLoading3Quarters className="mr-1 animate-spin text-xl" />
-        </p>
+        <Loading />
       ) : (
         <div>
           {profiles.data.reject.length !== 0 ? (
