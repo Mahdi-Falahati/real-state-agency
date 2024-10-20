@@ -17,6 +17,16 @@ export async function PATCH(req, context) {
     }
 
     const id = context.params.profileId;
+
+    const user = await User.findOne({ email: session.user.email });
+    if (!user) {
+      return NextResponse.json(
+        {
+          error: "حساب کاربری یافت نشد",
+        },
+        { status: 404 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
