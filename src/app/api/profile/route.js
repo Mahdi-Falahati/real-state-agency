@@ -112,6 +112,7 @@ export async function PATCH(req) {
       category,
       rules,
       amenities,
+      reject,
     } = await req.json();
 
     const user = await User.findOne({ email: session.user.email });
@@ -164,6 +165,8 @@ export async function PATCH(req) {
     profile.amenities = amenities;
     profile.rules = rules;
     profile.category = category;
+    profile.reject = false;
+    profile.message = "";
     profile.save();
 
     return NextResponse.json(
