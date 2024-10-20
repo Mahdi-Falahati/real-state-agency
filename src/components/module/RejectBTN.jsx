@@ -4,6 +4,7 @@ import { FcCancel } from "react-icons/fc";
 import { SlClose } from "react-icons/sl";
 import { LuPencilLine } from "react-icons/lu";
 import { BarLoader } from "react-spinners";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function RejectBtn({ id }) {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,17 @@ export default function RejectBtn({ id }) {
     const res = await req.json();
     console.log(res);
     setLoading(false);
+
+    setOpen(!open);
+    if (res.error) {
+      toast.error(res.error);
+    } else {
+      toast.success(res.message);
+      setData("");
+      setInterval(() => {
+        window.location.reload();
+      }, 1000);
+    }
   };
 
   if (loading) {
@@ -72,6 +84,7 @@ export default function RejectBtn({ id }) {
                 </section>
               </div>
             </div>
+            <ToastContainer position="top-center" limit={1} rtl={true} />
           </div>
         )}
       </>
