@@ -27,6 +27,15 @@ export async function PATCH(req, context) {
         { status: 404 }
       );
     }
+
+    if (user.role !== "ADMIN") {
+      return NextResponse.json(
+        {
+          error: "شما دسترسی لازم برای اینکار را ندارید",
+        },
+        { status: 200 }
+      );
+    }
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
