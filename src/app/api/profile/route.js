@@ -61,19 +61,36 @@ export async function POST(req) {
       );
     }
 
-    const newProfile = await Profile.create({
-      title,
-      description,
-      location,
-      phone,
-      price: +price,
-      realState,
-      constructionDate,
-      category,
-      rules,
-      amenities,
-      userId: new Types.ObjectId(user._id),
-    });
+    if (user.role === "ADMIN") {
+      const newProfile = await Profile.create({
+        title,
+        description,
+        location,
+        phone,
+        price: +price,
+        realState,
+        constructionDate,
+        category,
+        rules,
+        amenities,
+        published: true,
+        userId: new Types.ObjectId(user._id),
+      });
+    } else {
+      const newProfile = await Profile.create({
+        title,
+        description,
+        location,
+        phone,
+        price: +price,
+        realState,
+        constructionDate,
+        category,
+        rules,
+        amenities,
+        userId: new Types.ObjectId(user._id),
+      });
+    }
 
     return NextResponse.json(
       { message: "آکهی با موفقیت ثبت شد!" },
