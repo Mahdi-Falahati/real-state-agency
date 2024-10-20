@@ -6,9 +6,11 @@ import { LuClipboardEdit } from "react-icons/lu";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { toast, ToastContainer } from "react-toastify";
 import { PulseLoader } from "react-spinners";
+import { useRouter } from "next/navigation";
 
 export default function DashboardCard({ data }) {
   const [loading, setLoading] = useState({ e: false, r: false });
+  const router = useRouter();
 
   const deleteHandler = async () => {
     setLoading({ ...loading, r: true });
