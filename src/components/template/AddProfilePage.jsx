@@ -47,7 +47,7 @@ export default function AddProfilePage({ data }) {
     if (data.error) {
       toast.error(data.error);
     } else {
-      toast.success(data.message);
+      router.push("/dashboard/my-profiles");
     }
     setProfileData({
       title: "",
