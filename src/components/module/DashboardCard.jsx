@@ -7,6 +7,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { toast, ToastContainer } from "react-toastify";
 import { PulseLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
+import WarningMessage from "./WarningMessage";
 
 export default function DashboardCard({ data }) {
   const [loading, setLoading] = useState({ e: false, r: false });
@@ -37,8 +38,8 @@ export default function DashboardCard({ data }) {
   };
 
   return (
-    <div className="my-5 shadow-inner rounded-md shadow-slate-400 pt-3">
-      <div className="flex justify-around font-medium items-center">
+    <div className="flex  flex-col items-center my-5 shadow-inner rounded-md shadow-slate-400 pt-3">
+      <div className="flex justify-around font-medium items-center w-full">
         {loading.r ? (
           <PulseLoader
             color="red"
@@ -77,6 +78,7 @@ export default function DashboardCard({ data }) {
         )}
       </div>
       <Card data={data} margin={"my-2"} />
+      {data.message && <WarningMessage message={data.message} />}
       <ToastContainer position="top-center" limit={1} rtl={true} />
     </div>
   );
