@@ -10,7 +10,7 @@ import ChoiceUs from "@/module/ChoiceUs";
 
 export default function HomePage() {
   return (
-    <section className="inline-block mt-16">
+    <section className="inline-block mt-16 overflow-hidden">
       <h1 className="text-center text-3xl font-semibold tracking-wider text-blue-950">
         آژانس مسکن فلاحتی
       </h1>
@@ -32,7 +32,10 @@ export default function HomePage() {
         </h2>
       </div>
 
-      <section className="flex justify-around mt-24 mb-14 flex-wrap">
+      <section
+        className="flex justify-around mt-24 mb-14 flex-wrap"
+        data-aos="fade-down-right"
+      >
         <CategoryCard title="خانه ویلایی" name="villa" />
         <CategoryCard title="آپارتمان" name="apartment" />
         <CategoryCard title="دفتر" name="office" />
@@ -40,7 +43,7 @@ export default function HomePage() {
       </section>
 
       <section className="inline-block my-20">
-        <h2 className="font-semibold text-2xl flex justify-center items-center">
+        <h2 className="font-semibold overflow-hidden text-2xl flex justify-center items-center">
           شهر های پربازدید
           <GiSemiClosedEye className="mr-2" />
         </h2>
@@ -48,6 +51,8 @@ export default function HomePage() {
           {cities?.map((city, i) => (
             <li
               key={i}
+              data-aos="fade-up"
+              data-aos-anchor-placement="center-bottom"
               className="flex justify-center items-center font-semibold tracking-wider text-gray-600 shadow-inner shadow-gray-300 rounded-lg min-w-[250px] px-1 mx-2 my-5 py-2"
             >
               <IoMdCheckmarkCircleOutline className="ml-2 text-green-700 text-2xl" />

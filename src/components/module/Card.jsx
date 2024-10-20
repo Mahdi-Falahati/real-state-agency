@@ -4,7 +4,6 @@ import { IoStorefrontOutline } from "react-icons/io5";
 import { RiHomeOfficeLine } from "react-icons/ri";
 import { TbCurrentLocation } from "react-icons/tb";
 import { GiPriceTag } from "react-icons/gi";
-// import { PiEyesFill } from "react-icons/pi";
 import { TiArrowBackOutline } from "react-icons/ti";
 
 import { sp } from "@/utils/replaceNmber";
