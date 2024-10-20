@@ -1,3 +1,4 @@
+import User from "@/models/User";
 import connectDB from "@/utils/connectDB";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
@@ -32,6 +33,16 @@ export async function PATCH(req, context) {
       return NextResponse.json(
         {
           error: "شما دسترسی لازم برای اینکار را ندارید",
+        },
+        { status: 200 }
+      );
+    }
+
+    const profile = await Profile.findById(id);
+    if (!profile) {
+      return NextResponse.json(
+        {
+          error: "آگهی مورد نظر یافت نشد",
         },
         { status: 200 }
       );
