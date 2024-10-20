@@ -71,8 +71,8 @@ export default function MyProfilesPage() {
       ) : (
         <div>
           {profiles.data.reject.length !== 0 ? (
-            <div className="my-10">
-              <h1 className="flex justify-start items-center font-semibold text-2xl text-red-600 mt-10">
+            <div className="mb-10">
+              <h1 className="flex justify-start items-center font-semibold text-xl text-red-600 mt-10">
                 <IoIosRemoveCircleOutline className="ml-1 " />
                 آگهی های رد شده
               </h1>
@@ -88,8 +88,8 @@ export default function MyProfilesPage() {
           ) : null}
 
           {profiles.data.notPublished.length !== 0 ? (
-            <div className="my-20">
-              <h1 className="flex justify-start items-center font-semibold text-2xl text-yellow-600 mt-10">
+            <div className="mb-20">
+              <h1 className="flex justify-start items-center font-semibold text-xl text-yellow-600 mt-10">
                 <TbProgress className="ml-1 " />
                 آگهی های در انتظار تایید
               </h1>
@@ -105,8 +105,8 @@ export default function MyProfilesPage() {
           ) : null}
 
           {profiles.data.published.length !== 0 ? (
-            <div className="my-10">
-              <h1 className="flex justify-start items-center font-semibold text-2xl text-green-600 mt-10">
+            <div className="mb-10">
+              <h1 className="flex justify-start items-center font-semibold text-xl text-green-600 mt-10">
                 <GiConfirmed className="ml-1 " />
                 آگهی های منتشر شده
               </h1>
