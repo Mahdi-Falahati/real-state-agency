@@ -15,6 +15,8 @@ export async function PATCH(req, context) {
         { status: 401 }
       );
     }
+
+    const id = context.params.profileId;
   } catch (error) {
     return NextResponse.json(
       { error: "مشکلی در سرور رخ داده است" },
