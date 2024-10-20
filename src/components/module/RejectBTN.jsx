@@ -7,10 +7,19 @@ import { LuPencilLine } from "react-icons/lu";
 export default function RejectBtn({ id }) {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState("");
+
   const toggleHandler = () => {
     setOpen(!open);
   };
 
+  const rejectProfileHandler = async () => {
+    const req = await fetch(`/api/profile/reject/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+      "Content-Type": "application/json",
+    });
+    const res = await req.json();
+  };
   return (
     <>
       <button
@@ -42,7 +51,10 @@ export default function RejectBtn({ id }) {
                   className="text-black rounded-md peer h-full min-h-[220px] w-full resize-none p-2 focus:outline-none"
                 ></textarea>
 
-                <button className="flex justify-center items-center my-3 border hover:bg-white hover:text-black hover:scale-105  border-solid border-white w-[150px] h-[35px] rounded-lg">
+                <button
+                  onClick={rejectProfileHandler}
+                  className="flex justify-center items-center my-3 border hover:bg-white hover:text-black hover:scale-105  border-solid border-white w-[150px] h-[35px] rounded-lg"
+                >
                   رد کردن آگهی
                   <FcCancel className="ml-1 text-2xl" />
                 </button>
