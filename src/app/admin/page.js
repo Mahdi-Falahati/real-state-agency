@@ -14,8 +14,7 @@ export default async function Admin() {
   const user = await User.findOne({ email: session.user.email });
   if (user.role != "ADMIN") return redirect("/dashboard");
 
-  const profiles = await Profile.find({ published: false });
-
+  const profiles = await Profile.find({ published: false, reject: false });
   return (
     <DashboardSideBar email={user.email} role={user.role}>
       <AdminPage profiles={profiles} />
