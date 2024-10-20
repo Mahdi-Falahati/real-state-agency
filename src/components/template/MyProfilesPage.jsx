@@ -1,9 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import DashboardCard from "@/module/DashboardCard";
 import { useEffect, useState } from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
 import { TbProgress } from "react-icons/tb";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
@@ -11,6 +9,7 @@ import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { GiAquarium } from "react-icons/gi";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Loading from "@/module/Loading";
+import RenderCardMyProfiles from "@/module/RenderCardMyProfiles";
 
 export default function MyProfilesPage() {
   const [profiles, setProfiles] = useState({
@@ -68,56 +67,32 @@ export default function MyProfilesPage() {
         <Loading />
       ) : (
         <div>
-          {profiles.data.reject.length !== 0 ? (
-            <div className="mb-10">
-              <h1 className="flex justify-start items-center font-semibold text-xl text-red-600 mt-10">
-                <IoIosRemoveCircleOutline className="ml-1 " />
-                آگهی های رد شده
-              </h1>
-              <div className="flex justify-around items-center flex-wrap">
-                {profiles.data?.reject?.map((profile) => (
-                  <DashboardCard
-                    key={profile._id}
-                    data={JSON.parse(JSON.stringify(profile))}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : null}
+          {profiles.data.reject.length !== 0 && (
+            <RenderCardMyProfiles
+              icon={<IoIosRemoveCircleOutline className="mr-1 animate-pulse" />}
+              data={profiles.data.reject}
+              title={"آگهی های رد شده "}
+              color={"text-red-600"}
+            />
+          )}
 
-          {profiles.data.notPublished.length !== 0 ? (
-            <div className="mb-20">
-              <h1 className="flex justify-start items-center font-semibold text-xl text-yellow-600 mt-10">
-                <TbProgress className="ml-1 " />
-                آگهی های در انتظار تایید
-              </h1>
-              <div className="flex justify-around items-center flex-wrap">
-                {profiles.data?.notPublished?.map((profile) => (
-                  <DashboardCard
-                    key={profile._id}
-                    data={JSON.parse(JSON.stringify(profile))}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : null}
+          {profiles.data.notPublished.length !== 0 && (
+            <RenderCardMyProfiles
+              icon={<TbProgress className="mr-1 animate-spin" />}
+              data={profiles.data.notPublished}
+              title={"آگهی های در انتظار تایید"}
+              color={"text-yellow-600"}
+            />
+          )}
 
-          {profiles.data.published.length !== 0 ? (
-            <div className="mb-10">
-              <h1 className="flex justify-start items-center font-semibold text-xl text-green-600 mt-10">
-                <GiConfirmed className="ml-1 " />
-                آگهی های منتشر شده
-              </h1>
-              <div className="flex justify-around items-center flex-wrap">
-                {profiles.data?.published?.map((profile) => (
-                  <DashboardCard
-                    key={profile._id}
-                    data={JSON.parse(JSON.stringify(profile))}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : null}
+          {profiles.data.published.length !== 0 && (
+            <RenderCardMyProfiles
+              icon={<GiConfirmed className="mr-1 animate-bounce" />}
+              data={profiles.data.published}
+              title={"آگهی های منتشر شده"}
+              color={"text-green-600"}
+            />
+          )}
         </div>
       )}
     </>
