@@ -26,7 +26,7 @@ export default function CardAdmin({ data }) {
         <ConfirmBTN id={JSON.parse(JSON.stringify(_id))} />
 
         <span className="h-[1px] w-full bg-gray-400"></span>
-        <RejectBtn />
+        <RejectBtn id={JSON.parse(JSON.stringify(_id))} />
         <span className="h-[1px] w-full bg-gray-400"></span>
         <Link
           href={`/admin/${_id}`}
