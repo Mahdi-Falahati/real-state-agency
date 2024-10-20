@@ -51,6 +51,13 @@ const profileSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    reject: {
+      type: Boolean,
+      default: false,
+    },
+    message: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
