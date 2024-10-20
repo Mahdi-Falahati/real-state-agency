@@ -22,7 +22,7 @@ export default function Menu() {
         <FiAlignRight className="text-4xl text-white" />
       </button>
       {open && (
-        <div className="absolute top-20 bg-blue-700 rounded-b-lg">
+        <div className="absolute top-20 bg-blue-700 rounded-b-lg z-20">
           <ul className="sm:hidden flex flex-col items-center justify-between min-w-[200px] text-white">
             <li className="hover:scale-110 my-4">
               <Link href="/">صفحه اصلی</Link>
