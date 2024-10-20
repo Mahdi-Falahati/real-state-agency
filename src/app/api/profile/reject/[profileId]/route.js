@@ -18,6 +18,7 @@ export async function PATCH(req, context) {
     }
 
     const id = context.params.profileId;
+    const message = await req.json();
 
     const user = await User.findOne({ email: session.user.email });
     if (!user) {
