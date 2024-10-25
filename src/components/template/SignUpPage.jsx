@@ -46,7 +46,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <section className="flex justify-center items-center flex-col my-14">
+    <section className="flex justify-center items-center flex-col my-14  px-4 ">
       <div>
         <h2 className="bg-blue-700 text-white font-semibold text-2xl py-3 text-center rounded-t-lg">
           فرم ثبت نام
