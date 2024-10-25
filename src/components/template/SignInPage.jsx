@@ -39,7 +39,7 @@ export default function SignInPage() {
   };
 
   return (
-    <section className="flex justify-center items-center flex-col my-14  px-4 ">
+    <section className="flex justify-center items-center flex-col my-14  px-2">
       <div>
         <h2 className="bg-blue-700 text-white font-semibold text-2xl py-3 text-center rounded-t-lg">
           فرم ورود
@@ -103,6 +103,6 @@ export default function SignInPage() {
 }
 
 const inputStyles =
-  "outline-none border-none shadow-lg rounded-lg mt-1 text-center ";
+  "outline-none px-2 border-none shadow-lg rounded-lg mt-1 text-center ";
 const labelStyles =
   "block font-semibold text-gray-500 mt-5 mx-1 flex items-center";
